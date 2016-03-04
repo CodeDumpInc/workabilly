@@ -17,4 +17,5 @@ class Downloader(BaseWorker):
 
     def execute(self, **kwargs):
         result = wget.download(self.source, out=self.target)
+        print("")
         return {'downloaded': result}

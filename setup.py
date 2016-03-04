@@ -2,8 +2,8 @@ from distutils.core import setup
 
 setup(
     name='workabilly',
-    packages=['workabilly'],
-    version='0.1',
+    packages=['workabilly', 'workabilly.base'],
+    version='0.1.1',
     description='Tools to get a project set up',
     author='weeska',
     author_email='weeska@gmail.com',

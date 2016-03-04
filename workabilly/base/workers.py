@@ -6,34 +6,15 @@ class BaseWorker:
         self.next = None
         self.verbose = kwargs.get('verbose', True)
 
-    def _printDescription(self, desc):
+    def printDescription(self):
         if self.verbose:
-            if desc:
-                print(desc)
-
-    def _printPreExecute(self):
-        desc = self.preExecuteDescription()
-        self._printDescription(desc)
-
-    def _printExecute(self):
-        desc = self.executeDescription()
-        self._printDescription(desc)
-
-    def _printPostExecute(self):
-        desc = self.postExecuteDescription()
-        self._printDescription(desc)
+            print(self.executeDescription())
 
     def prepareWork(self, **kwargs):
         '''Override this to retrieve arguments before work starts'''
 
-    def preExecuteDescription(self):
-        pass
-
-    def postExecuteDescription(self):
-        pass
-
     def executeDescription(self):
-        pass
+        '''Override this to print a description of the job'''
 
     def preExecute(self):
         '''Gets called before the actual work is done'''

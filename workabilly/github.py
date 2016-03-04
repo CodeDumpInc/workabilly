@@ -22,12 +22,6 @@ class GithubArchiveGrabber(Downloader):
 
         super().__init__(source=self._buildUrl(), target=self.target)
 
-    def preExecuteDescription(self):
-        return 'Creating Temporary Folder ' + self.target
-
-    def postExecuteDescription(self):
-        return 'Deleting Temporary Folder ' + self.target
-
     def executeDescription(self):
         return 'Downloading ' + self.project
 
