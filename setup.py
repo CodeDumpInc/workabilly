@@ -8,7 +8,7 @@ setup(
     author='weeska',
     author_email='weeska@gmail.com',
     url='https://github.com/weeska/workabilly',
-    download_url='https://github.com/weeska/workabilly/tarball/0.1',
+    download_url='https://github.com/weeska/workabilly/tarball/0.1.2',
     keywords=['configuration', 'build'],
     classifiers=[],
 )
