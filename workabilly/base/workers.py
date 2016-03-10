@@ -8,7 +8,9 @@ class BaseWorker:
 
     def printDescription(self):
         if self.verbose:
-            print(self.executeDescription())
+            description = self.executeDescription()
+            if description:
+                print(description)
 
     def prepareWork(self, **kwargs):
         '''Override this to retrieve arguments before work starts'''

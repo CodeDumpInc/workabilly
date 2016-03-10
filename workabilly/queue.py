@@ -27,12 +27,14 @@ class WorkingQueue:
         return res
 
     def start(self, **kwargs):
-        res = {}
+        data = {}
         while len(self.queue) > 0:
             current = self.queue.pop(0)
             if current is None:
                 continue
-            res = self.execute(current, **res)
+            ret = self.execute(current, **data)
+            if ret:
+                data.update(ret)
 
         while len(self.done) > 0:
             current = self.done.pop()
