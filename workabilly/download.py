@@ -1,17 +1,17 @@
-from .base.workers import BaseWorker
+from .base.workers import BaseTask
 
 import os
 import wget
 
 
-class Downloader(BaseWorker):
+class Download(BaseTask):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.source = kwargs.get('source')
         self.target = kwargs.get('target', './')
 
-    def preExecute(self):
+    def beforeExecute(self):
         if not os.path.exists(self.target):
             os.makedirs(self.target)
 

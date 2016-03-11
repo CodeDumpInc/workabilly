@@ -1,22 +1,22 @@
-from .base.workers import BaseWorker
+from .base.workers import BaseTask
 
 import os
 import zipfile
 
 
-class Unzipper(BaseWorker):
+class Unzip(BaseTask):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.target = kwargs.get('target')
 
-    def executeDescription(self):
+    def description(self):
         return 'Extracting ' + self.source + ' to ' + self.target
 
-    def prepareWork(self, **kwargs):
+    def prepare(self, **kwargs):
         self.source = kwargs.get('archive')
 
-    def preExecute(self):
+    def beforeExecute(self):
         if not os.path.exists(self.target):
             os.makedirs(self.target)
 
@@ -24,5 +24,5 @@ class Unzipper(BaseWorker):
         with zipfile.ZipFile(self.source, "r") as z:
             z.extractall(self.target)
 
-    def postExecute(self):
+    def afterExecute(self):
         os.remove(self.source)

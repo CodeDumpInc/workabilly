@@ -1,9 +1,9 @@
-from .downloader import Downloader
+from .download import Download
 
 import shutil
 
 
-class GithubArchiveGrabber(Downloader):
+class GithubArchiveDownload(Download):
 
     def _buildUrl(self):
         archive = self.tag
@@ -22,11 +22,11 @@ class GithubArchiveGrabber(Downloader):
 
         super().__init__(source=self._buildUrl(), target=self.target)
 
-    def executeDescription(self):
+    def description(self):
         return 'Downloading ' + self.project
 
     def execute(self, **kwargs):
         return {'archive': super().execute(**kwargs).get('downloaded')}
 
-    def postExecute(self):
+    def afterExecute(self):
         shutil.rmtree(self.target)
