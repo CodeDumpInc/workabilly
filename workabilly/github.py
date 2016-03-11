@@ -25,8 +25,8 @@ class GithubArchiveDownload(Download):
     def description(self):
         return 'Downloading ' + self.project
 
-    def execute(self, **kwargs):
-        return {'archive': super().execute(**kwargs).get('downloaded')}
+    def doExecute(self, **kwargs):
+        return {'archive': super().doExecute(**kwargs).get('downloaded')}
 
     def afterExecute(self):
         shutil.rmtree(self.target)

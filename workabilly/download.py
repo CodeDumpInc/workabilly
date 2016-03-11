@@ -1,4 +1,4 @@
-from .base.workers import BaseTask
+from .base.task import BaseTask
 
 import os
 import wget
@@ -15,7 +15,7 @@ class Download(BaseTask):
         if not os.path.exists(self.target):
             os.makedirs(self.target)
 
-    def execute(self, **kwargs):
+    def doExecute(self, **kwargs):
         result = wget.download(self.source, out=self.target)
         print("")
         return {'downloaded': result}
